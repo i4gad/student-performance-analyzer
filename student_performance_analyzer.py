@@ -13,7 +13,10 @@ def analyze_student_performance(student_records):
         for module in student.get('modules', []):
             score = module.get('score', 0)
             
-            if score >= strength_threshold:
+            #Before modification - if score >= strength_threshold:
+            # AFTER:
+            attendance = module.get('attendance', 100)
+            if score >= strength_threshold and attendance > 75:
                 strength_count += 1
                 strengths_list.append(module.get('name', 'Unknown'))
             elif score < weakness_threshold:
@@ -59,4 +62,5 @@ for r in results:
     print(f"Strengths: {r['strengths']}")
     print(f"Weaknesses: {r['weaknesses']}")
     print(f"Recommendation: {r['recommendation']}")
+
     print(f"Strength Ratio: {r['strength_ratio']}%")
