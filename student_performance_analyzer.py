@@ -20,8 +20,12 @@ def analyze_student_performance(student_records):
                 weakness_count += 1
                 weaknesses_list.append(module.get('name', 'Unknown'))
         
-        if strength_count > weakness_count:
-            recommendation = "High Achiever - Continue Current Strategy"
+        #Before - if strength_count > weakness_count:
+        #after - 
+        if strength_count == total_modules:
+            recommendation = "Exceptional Achiever"
+        elif strength_count > weakness_count:
+            recommendation = "High Achiever"
         elif weakness_count > strength_count:
             recommendation = "Requires Intervention - Schedule Academic Support"
         else:
@@ -59,4 +63,5 @@ for r in results:
     print(f"Strengths: {r['strengths']}")
     print(f"Weaknesses: {r['weaknesses']}")
     print(f"Recommendation: {r['recommendation']}")
+
     print(f"Strength Ratio: {r['strength_ratio']}%")
